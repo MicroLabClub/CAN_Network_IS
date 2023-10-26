@@ -1,5 +1,6 @@
 #include "dd_can_signal.h"
 #include "dd_can_mcp.h"
+#include "dd_can_matrix.h"
 #include "dd_joystick/dd_joystick.h"
 #include "stdint.h"
 
@@ -19,4 +20,13 @@ void dd_can_signal_loop(){
 
     tx_buff[4] = b; // Button state
 
+}
+
+uint8_t dd_can_signal_get_bip(){
+    uint32_t matrix_id = dd_can_matrix_get_msg_ref(CAN_ID_ROMAN_A);
+    uint8_t * msg_buff = dd_can_matrix_get_msg_buff_ref( matrix_id);
+
+    uint8_t bip_sig = msg_buff[4];
+
+    return bip_sig;
 }

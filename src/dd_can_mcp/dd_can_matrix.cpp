@@ -18,7 +18,11 @@ int8_t CanMatrix[2 + 8][CAN_MATRIX_SIZE];
 
 char msg_string[128]; // Array to store serial string
 
-size_t dd_can_matrix_get_msg_ref(uint16_t rxId)
+uint8_t * dd_can_matrix_get_msg_buff_ref(uint16_t matrix_id){
+    return CanMatrix_new[matrix_id].message;
+}
+
+uint16_t dd_can_matrix_get_msg_ref(uint16_t rxId)
 {
     size_t msg_ref = 0;
 

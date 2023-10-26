@@ -1,9 +1,12 @@
 #include "Arduino.h"
+
 #include "dd_can_mcp/dd_can_mcp.h"
 #include "dd_can_mcp/dd_can_matrix.h"
 #include "dd_can_mcp/dd_can_signal.h"
+
 #include "dd_joystick/dd_joystick.h"
 #include "dd_buzzer/dd_buzzer.h"
+
 #include "srv_control/srv_control.h"
 
 void setup()
@@ -12,11 +15,14 @@ void setup()
 
   dd_can_setup();
   dd_joystick_setup();
+  dd_buzzer_setup();
+
+  srv_control_setup();
 }
 
 #define SYS_TICK 1
 
-#define CAN_SEND_REC (5000 / SYS_TICK)
+#define CAN_SEND_REC (10 / SYS_TICK)
 int send_rec_cnt = CAN_SEND_REC+1;
 
 #define CAN_RECV_REC (1 / SYS_TICK)
@@ -50,7 +56,7 @@ void loop()
   }  
 
   if (--srv_control_rec_cnt <= 0)
-  {// send data per 10ms
+  {
     srv_control_loop();
     srv_control_rec_cnt = SRV_CONTROL_REC;
   }  

@@ -30,6 +30,9 @@ enum Can_Matrix_ID
 };
 
 void dd_can_matrix_set(uint16_t CanID, uint8_t *buff, uint16_t len );
+uint16_t dd_can_matrix_get_msg_ref(uint16_t rxId);
+uint8_t * dd_can_matrix_get_msg_buff_ref(uint16_t matrix_id);
+
 void dd_can_matrix_print();
 
 #endif

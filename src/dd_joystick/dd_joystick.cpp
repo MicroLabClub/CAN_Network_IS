@@ -47,5 +47,5 @@ void dd_joystick_report(){
 
     sprintf(joy_msg_string, "JOYSTICK:  X = %d, Y = %d, B = %d, ", 
     x,y,b);
-    Serial.print(joy_msg_string);
+    Serial.println(joy_msg_string);
 }

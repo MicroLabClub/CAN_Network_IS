@@ -90,11 +90,14 @@ void dd_can_send_loop()
   if (sndStat == CAN_OK)
   {
     // Serial.println("Message Sent Successfully!");
+    // dd_can_matrix_set(MY_CAN_ID, dd_can_tx_data, 8);
   }
   else
   {
     // Serial.println("Error Sending Message...");
   }
+
+
 }
 
 /*********************************************************************************************************
