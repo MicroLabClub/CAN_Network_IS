@@ -54,8 +54,9 @@ void dd_can_recv_loop()
     //   sprintf(msgString, "Extended ID: 0x%.8lX  DLC: %1d  Data:", (rxId & 0x1FFFFFFF), len);
     }else{
     //   sprintf(msgString, "Standard ID: 0x%.3lX       DLC: %1d  Data:", rxId, len);
-    // Serial.print(msgString);
     }
+    // Serial.print(msgString);
+    
     // Determine if message is a remote request frame.
     if ((rxId & 0x40000000) == 0x40000000)
     {
