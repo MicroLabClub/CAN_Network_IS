@@ -50,12 +50,12 @@ void dd_can_recv_loop()
     // Read data: len = data length, buf = data byte(s)
     CAN0.readMsgBuf(&rxId, &len, dd_can_rx_data);
     // Determine if ID is standard (11 bits) or extended (29 bits)
-    if ((rxId & 0x80000000) == 0x80000000)
+    if ((rxId & 0x80000000) == 0x80000000){
     //   sprintf(msgString, "Extended ID: 0x%.8lX  DLC: %1d  Data:", (rxId & 0x1FFFFFFF), len);
-    // else
+    }else{
     //   sprintf(msgString, "Standard ID: 0x%.3lX       DLC: %1d  Data:", rxId, len);
     // Serial.print(msgString);
-
+    }
     // Determine if message is a remote request frame.
     if ((rxId & 0x40000000) == 0x40000000)
     {
@@ -104,7 +104,7 @@ void dd_can_tx_buff_print()
 {
   Serial.println("CAN tx report:");
 
-  sprintf(can_msg_string, "CAN ID: 0x%.4X Data:", rxId);
+  sprintf(can_msg_string, "CAN ID: 0x%.4X Data:", MY_CAN_ID);
   Serial.print(can_msg_string);
 
   for (int i = 0; i < 8; i++)
